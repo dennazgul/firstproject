@@ -1,45 +1,13 @@
 <html>
 
 <head>
-    <script type="text/javascript">
-        function formatNumber(myNumber)/*это функция, которая позволяет форматировать и видоизменять числа */
-        {if (myNumber<=9){/*условие - если переменная myNumber меньшеравна 9 */
-                    myNumber='0'+myNumber;/*то к ней прибавляется ноль(в строчном значении) */
-                }
-                   return myNumber;    /*возвращает для работы число после его обратоки функцией*/
-        }
-        function ts(){/*функция, я так и не смог понять почему ts, но явно есть какое-то объяснение*/
-            var myel = document.getElementById('myData');/*задаем переменную myel и саму функцию - найти в документе элемент по его id*/
-            var dd = new Date();/*создаем переменную, которая выводит полную дату
-            var day = dd.getDate();здесь и дальше отдельные элементы, которые выщемляются из функции даты
-            var month = dd.getMonth()+1;
-            var year = dd.getFullYear();
-            var hour = dd.getHours ();
-            var min = dd.getMinutes ();*/
-                   
-                
-              myel.innerText = formatNumber(dd.getDate())+'.'+formatNumber(dd.getMonth()+1)+'.'+
-              dd.getFullYear()+' '+formatNumber(dd.getHours ())+':'+formatNumber(dd.getMinutes ());/*команда, которая выведет в нужное место текст, собранный с помощью описанной выше функции*/
-        }
+    <script type="text/javascript" src="warehouse.js">
     </script>
 </head>
 
 <body>
-    <style>
-        .spoiler-title {
-            cursor: pointer;
-        }
-        
-        .spoiler-body {
-            display: none;
-            background: #f1f1f1;
-        }
-    </style>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <div id="myData"></div>
     <input type="button" value="cam hir" class="spoiler-title" onclick="ts()" />
-    <div class="spoiler-body">skritii text, kot poyavl pri navedenii</div>
-
 </body>
 
 </html>
