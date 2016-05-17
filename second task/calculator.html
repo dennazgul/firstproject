@@ -1,8 +1,26 @@
 <html>
+
 <head>
-    <script type ='text/javascript' src='script/calculator.js'></script>
+    <script type='text/javascript' src='script/calculator.js'></script>
 </head>
+
 <body>
-   
+    <input type='text' id='b1' value=''><span> введите первое число</span>
+    <br>
+    <br>
+    <input type='text' id='b2' value=''><span> введите второе число</span>
+    <br>
+    <br>
+    <select id='znak'>
+        <option id='umn' value ='1'>Умножение</option>
+        <option id='del' value ='2'>Деление</option>
+        <option id='slg' value ='3'>Сложение</option>
+        <option id='vch' value ='4'>Вычитание</option>
+    </select>
+    <br>
+    <br>
+    <input type="button" value="рассчитать" onclick="ts()" />
+    <span id='itog'></span>
 </body>
+
 </html>
