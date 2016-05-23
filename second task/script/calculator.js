@@ -1,47 +1,25 @@
-/*function ts() {
-    var myel = document.getElementById('itog')
-    var ks = document.getElementById('znak').value
-    var b1 = Number(document.getElementById('b1').value)
-    var b2 = Number(document.getElementById('b2').value)
-    if (ks == 1) {
-        ks = b1 * b2
-    } else if (ks == 2) {
-        ks = b1 / b2
-    } else if (ks == 3) {
-        ks = b1 + b2
-    } else {
-        ks = b1 - b2
-    }
-    myel.innerText = ks;
-}*/
-function formatNumber(myNumber) {
-    if (myNumber == 0) {
-        alert('В делителе ноль. Недопустимое значение');
-    }
-    return myNumber;
-}
-
-function format(mygNumber) {
-    if (mygNumber == 'NaN') {
-        alert('введено недопустимое значение');
-    }
-    return mygNumber;
-}
-
-
 function ts() {
     var myel = document.getElementById('itog')
     var ks = document.getElementById('znak').value;
     var b1 = Number(document.getElementById('b1').value)
     var b2 = Number(document.getElementById('b2').value)
-    if (ks == 1) {
-        ks = b1 * b2;
-    } else if (ks == 2) {
-        ks = b1 / formatNumber(b2);
-    } else if (ks == 3) {
-        ks = b1 + b2
+    var ks1
+    if (isNaN(b1) || isNaN(b2)) {
+        alert('Вы вводите буквы')
     } else {
-        ks = b1 - b2;
+        if (ks == 1) {
+            ks1 = b1 * b2;
+        } else if (ks == 2) {
+            if (b2 !== 0) {
+                ks1 = b1 / b2
+            } else {
+                alert('деление на ноль!')
+            }
+        } else if (ks == 3) {
+            ks1 = b1 + b2
+        } else {
+            ks1 = b1 - b2;
+        }
+        myel.innerText = ks1;
     }
-    myel.innerText = format(ks);
 }
