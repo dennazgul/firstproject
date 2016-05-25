@@ -1,6 +1,7 @@
 function ts() {
-    var myel = document.getElementById('itog')
+    var myel = document.getElementById('itog');
     var ks = document.getElementById('znak').value;
+
     var b1 = Number(document.getElementById('b1').value)
     var b2 = Number(document.getElementById('b2').value)
     var ks1
@@ -22,4 +23,6 @@ function ts() {
         }
         myel.innerText = ks1;
     }
+
+    myel.innerText = ks1;
 }
