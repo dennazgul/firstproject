@@ -64,20 +64,32 @@ function PNB() {
 
 }*/
 
-function ULTI() {
+function ULTI2() {
     var bnwv2 = document.getElementById('bnw2');
     var myel = document.getElementById('itog');
-    if (PNB() < 229) {
-        bnwv2.innerText = ' вводите буквы';
-    } else if (PND2() < 229) {
-        bnwv2.innerText = ' пустая ячейка';
-    } else if (PNN() < 229) {
-        bnwv2.innerText = 'делить на ноль нельзя';
-        myel.innerText = ''
-    } else {
-        bnwv2.innerText = '';
-    }
+    var ks = document.getElementById('znak').value;
+    if (ks == 2) {
+        if (PNB() < 229) {
+            bnwv2.innerText = ' вводите буквы';
+        } else if (PND2() < 229) {
+            bnwv2.innerText = ' пустая ячейка';
+        } else if (PNN() < 229) {
+            bnwv2.innerText = 'делить на ноль нельзя';
+            myel.innerText = ''
+        } else {
+            bnwv2.innerText = ''
+        }
 
+    } else {
+        if (PNB() < 229) {
+            bnwv2.innerText = ' вводите буквы';
+        } else if (PND2() < 229) {
+            bnwv2.innerText = ' пустая ячейка';
+        } else {
+
+            bnwv2.innerText = '';
+        }
+    }
 }
 
 function PND2() {
@@ -113,6 +125,41 @@ function PNN() {
         } else {
             qaz = 229;
         }
+    }
+    return qaz
+}
+
+
+function ULTI1() {
+    var bnwv1 = document.getElementById('bnw1');
+    if (PNB1() < 229) {
+        bnwv1.innerText = ' вводите буквы';
+    } else if (PND1() < 229) {
+        bnwv1.innerText = ' пустая ячейка';
+    } else {
+        bnwv1.innerText = ''
+    }
+}
+
+function PND1() {
+    var b1 = document.getElementById('b1').value;
+    var qaz
+    if (b1.length == 0) {
+        qaz = 228;
+    } else {
+        qaz = 229;
+    }
+    return qaz
+
+}
+
+function PNB1() {
+    var b1 = Number(document.getElementById('b1').value);
+    var qaz
+    if (isNaN(b1)) {
+        qaz = 228;
+    } else {
+        qaz = 229;
     }
     return qaz
 }
