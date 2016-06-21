@@ -6,22 +6,21 @@
 </head>
 
 <body>
-    <input id='b1' value='' onchange='ULTI1()' style="border: 1px solid red; border-color:black"><span id="bnw1" style='color:red'></span>
+    Число 1: <input id='b1' value='' onchange='ULTI(this)' style="border: 1px solid red; border-color:black"><span id="b1-s" style='color:red'></span>
     <br>
     <br>
-    <input id='b2' value='' onchange='ULTI2()' style="border: 1px solid red; border-color:black"><span id="bnw2" style='color:red'></span>
-    <br>
-    <br>
-    <select id='znak' onchange='ULTI2()'>
-        <option id='umn' value ='1'>Умножение</option>
-        <option id='del' value ='2'>Деление</option>
-        <option id='slg' value ='3'>Сложение</option>
-        <option id='vch' value ='4'>Вычитание</option>
+    <select id='znak' onchange='validate()'>
+        <option id='umn' value ='1'>*</option>
+        <option id='del' value ='2'>/</option>
+        <option id='slg' value ='3'>+</option>
+        <option id='vch' value ='4'>-</option>
     </select>
+    <br>
+    <br> Число 2: <input id='b2' value='' onchange='ULTI(this)' style="border: 1px solid red; border-color:black"><span id="b2-s" style='color:red'></span>
     <br>
     <br>
     <input type="button" value="рассчитать" onclick="ts()" />
-    <span id='itog'></span>
+    <span>Результат: </span><span id='itog'></span>
 </body>
 
 </html>

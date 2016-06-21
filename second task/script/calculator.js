@@ -1,8 +1,21 @@
 function ts() {
+    var isvalid = true;
+    var isvalid2 = true;
+    var el1 = document.getElementById('b1');
+    //проверяем валидность поля один. Передаем в функцию проверки элемент один
+    isvalid = ULTI(el1);
+    var el2 = document.getElementById('b2');
+    isvalid2 = ULTI(el2);
+    if (isvalid == false) {
+        return;
+    }
+    if (isvalid2 == false) {
+        return;
+    }
     var myel = document.getElementById('itog');
     var ks = document.getElementById('znak').value;
-    var b1 = Number(document.getElementById('b1').value);
-    var b2 = Number(document.getElementById('b2').value);
+    var b1 = Number(el1.value);
+    var b2 = Number(el2.value);
     var bnwv2 = document.getElementById('bnw2');
     var ks1;
     /*if (isNaN(b1) || isNaN(b2)) {
@@ -14,7 +27,7 @@ function ts() {
         if (b2 !== 0) {
             ks1 = b1 / b2
         } else {
-            bnwv2.innerText = ' знаминатель не может быть равен нулю 0';
+            return;
         }
     } else if (ks == 3) {
         ks1 = b1 + b2
@@ -27,119 +40,78 @@ function ts() {
     myel.innerText = ks1;
 }
 
+function validate() {
+    var isvalid = true;
+    var isvalid2 = true;
+    var el1 = document.getElementById('b1');
+    isvalid = ULTI2(el1);
+    var el2 = document.getElementById('b2');
+    isvalid2 = ULTI2(el2);
+}
 
-function ULTI2() {
-    var bnwv2 = document.getElementById('bnw2');
+function ULTI(el) {
+    //получаем элемент span привязанный к эл-ту инпута. к id инпута прибавляем -s и получаем id соответствующего спана (выбрано по конвенции)
+    var bnwv2 = document.getElementById(el.id + '-s');
     var myel = document.getElementById('itog');
     var ks = document.getElementById('znak').value;
-    var b2 = document.getElementById('b2')
-    if (ks == 2) {
-        if (PNB() < 229) {
-            bnwv2.innerText = ' вводите буквы';
-            b2.style.borderColor = 'red';
-        } else if (PND2() < 229) {
-            bnwv2.innerText = ' пустая ячейка';
-            b2.style.borderColor = 'red';
-        } else if (PNN() < 229) {
-            bnwv2.innerText = ' делить на ноль нельзя';
-            b2.style.borderColor = 'red';
-            myel.innerText = ''
-        } else {
-            bnwv2.innerText = '';
-            b2.style.borderColor = 'black';
-            b2.style.borderWidth = '1px';
-        }
-
+    var b2 = el;
+    var isvalid = false;
+    var errorMessage = '';
+    var Bukv = PNB(el);
+    var Del = PND(el);
+    var Nol = PNN(el);
+    if (Bukv) {
+        errorMessage = ' вводите буквы';
+    } else
+    if (Del) {
+        errorMessage = ' пустая ячейка';
+    } else if (Nol && ks == 2) {
+        errorMessage = ' делить на ноль нельзя';
     } else {
-        if (PNB() < 229) {
-            bnwv2.innerText = ' вводите буквы';
-            b2.style.borderColor = 'red';
-        } else if (PND2() < 229) {
-            bnwv2.innerText = ' пустая ячейка';
-            b2.style.borderColor = 'red';
-        } else {
-
-            bnwv2.innerText = '';
-            b2.style.borderColor = 'black';
-            b2.style.borderWidth = '1px';
-        }
+        bnwv2.innerText = '';
+        b2.style.borderColor = 'black';
+        b2.style.borderWidth = '1px';
+        isvalid = true;
     }
+    if (!isvalid) {
+        bnwv2.innerText = errorMessage;
+        b2.style.borderColor = 'red';
+        myel.innerText = '';
+    }
+    return isvalid;
+
 }
 
-function PND2() {
-    var b2 = document.getElementById('b2').value;
-    var qaz
+function PND(el) {
+    var b2 = el.value;
+    var qaz;
     if (b2.length == 0) {
-        qaz = 228;
+        qaz = true;
     } else {
-        qaz = 229;
+        qaz = false;
     }
     return qaz
 
 }
 
-function PNB() {
-    var b2 = Number(document.getElementById('b2').value);
-    var qaz
+function PNB(el) {
+    var b2 = Number(el.value);
+    var qaz;
     if (isNaN(b2)) {
-        qaz = 228;
+        qaz = true;
     } else {
-        qaz = 229;
+        qaz = false;
     }
     return qaz
 }
 
-function PNN() {
-    var b2 = Number(document.getElementById('b2').value);
-    var ks = document.getElementById('znak').value;
-    var qaz
-    if (ks == 2) {
-        if (b2 == 0) {
-            qaz = 228;
-        } else {
-            qaz = 229;
-        }
-    }
-    return qaz
-}
-
-
-function ULTI1() {
-    var bnwv1 = document.getElementById('bnw1');
-    var b1 = document.getElementById('b1')
-    if (PNB1() < 229) {
-        bnwv1.innerText = ' вводите буквы';
-        b1.style.borderColor = 'red';
-    } else if (PND1() < 229) {
-        bnwv1.innerText = ' пустая ячейка';
-        b1.style.borderColor = 'red';
-
+function PNN(el) {
+    var b2 = Number(el.value);
+    var qaz;
+    if (b2 == 0) {
+        qaz = true;
     } else {
-        bnwv1.innerText = ''
-        b1.style.borderColor = 'black';
-        b1.style.borderWidth = '1px';
-    }
-}
-
-function PND1() {
-    var b1 = document.getElementById('b1').value;
-    var qaz
-    if (b1.length == 0) {
-        qaz = 228;
-    } else {
-        qaz = 229;
-    }
-    return qaz
-
-}
-
-function PNB1() {
-    var b1 = Number(document.getElementById('b1').value);
-    var qaz
-    if (isNaN(b1)) {
-        qaz = 228;
-    } else {
-        qaz = 229;
+        qaz = false;
     }
     return qaz
 }
