@@ -44,48 +44,52 @@ function validate() {
     var isvalid = true;
     var isvalid2 = true;
     var el1 = document.getElementById('b1');
-    isvalid = ULTI2(el1);
+    isvalid = ULTI(el1);
     var el2 = document.getElementById('b2');
-    isvalid2 = ULTI2(el2);
+    isvalid2 = ULTI(el2);
 }
 
 function ULTI(el) {
     //получаем элемент span привязанный к эл-ту инпута. к id инпута прибавляем -s и получаем id соответствующего спана (выбрано по конвенции)
     var bnwv2 = document.getElementById(el.id + '-s');
+    var newTest = document.getElementById('b2-s');
     var myel = document.getElementById('itog');
     var ks = document.getElementById('znak').value;
-    var b2 = el;
     var isvalid = false;
     var errorMessage = '';
     var Bukv = PNB(el);
     var Del = PND(el);
-    var Nol = PNN(el);
+    var Nol = PNN();
     if (Bukv) {
         errorMessage = ' вводите буквы';
     } else
     if (Del) {
         errorMessage = ' пустая ячейка';
-    } else if (Nol && ks == 2) {
+    } else if (Nol && ks == 2 && el.id == 'b2') {
         errorMessage = ' делить на ноль нельзя';
     } else {
         bnwv2.innerText = '';
-        b2.style.borderColor = 'black';
-        b2.style.borderWidth = '1px';
+        el.style.borderColor = 'black';
+        el.style.borderWidth = '1px';
         isvalid = true;
     }
     if (!isvalid) {
+
         bnwv2.innerText = errorMessage;
-        b2.style.borderColor = 'red';
+        el.style.borderColor = 'red';
         myel.innerText = '';
     }
+
+
     return isvalid;
+
 
 }
 
 function PND(el) {
-    var b2 = el.value;
+    var b = el.value;
     var qaz;
-    if (b2.length == 0) {
+    if (b.length == 0) {
         qaz = true;
     } else {
         qaz = false;
@@ -95,9 +99,9 @@ function PND(el) {
 }
 
 function PNB(el) {
-    var b2 = Number(el.value);
+    var b = Number(el.value);
     var qaz;
-    if (isNaN(b2)) {
+    if (isNaN(b)) {
         qaz = true;
     } else {
         qaz = false;
@@ -105,8 +109,8 @@ function PNB(el) {
     return qaz
 }
 
-function PNN(el) {
-    var b2 = Number(el.value);
+function PNN() {
+    var b2 = Number(document.getElementById('b2').value);
     var qaz;
     if (b2 == 0) {
         qaz = true;
